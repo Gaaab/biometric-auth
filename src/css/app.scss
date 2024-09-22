@@ -1,0 +1,11 @@
+// app global css in SCSS form
+.bg-none {
+  background: none !important;
+}
+
+.app-bg {
+  background-image: url('./images/app-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+}

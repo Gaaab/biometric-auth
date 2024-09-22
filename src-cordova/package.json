@@ -1,0 +1,36 @@
+{
+  "name": "service.biometrics.app",
+  "displayName": "Biometrics App",
+  "version": "1.0.0",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cordova-plugin-fingerprint-aio": "6.0.0"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-fingerprint-aio": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-local-notification": {},
+      "cordova-plugin-splashscreen": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  },
+  "devDependencies": {
+    "@mixon00/cordova-plugin-local-notification": "^1.0.0",
+    "cordova-android": "^13.0.0",
+    "cordova-plugin-badge": "^0.8.9",
+    "cordova-plugin-device": "^3.0.0",
+    "cordova-plugin-splashscreen": "^6.0.1"
+  }
+}

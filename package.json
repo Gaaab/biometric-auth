@@ -1,0 +1,54 @@
+{
+  "name": "biometrics-app",
+  "version": "0.0.1",
+  "description": "Biometrics Authentication App",
+  "productName": "Biometrics App",
+  "author": "Gabriel <web.gabriel.badiola@gmail.com>",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "android-dev": "cross-env QENV=local quasar dev -m cordova -T android",
+    "android-dev-server": "cross-env QENV=development quasar dev -m cordova -T android",
+    "android-prod-server": "cross-env QENV=production quasar dev -m cordova -T android",
+    "android-build": "cross-env QENV=production quasar build -m cordova -T android -- -- --packageType=apk",
+    "android-build-server": "cross-env QENV=production quasar dev -m cordova -T android",
+    "android-dev-build": "cross-env QENV=development quasar build -m cordova -T android -- -- --packageType=apk",
+    "android-local-build": "cross-env QENV=local quasar build -m cordova -T android -- -- --packageType=apk",
+    "android-build-aab": "cross-env QENV=production quasar build -m cordova -T android -- -- --packageType=bundle"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.4",
+    "@vueuse/core": "^11.1.0",
+    "axios": "^1.2.1",
+    "pinia": "^2.0.11",
+    "quasar": "^2.6.0",
+    "vue": "^3.4.18",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@intlify/unplugin-vue-i18n": "^2.0.0",
+    "@quasar/app-vite": "^2.0.0-beta.1",
+    "@types/node": "^20.5.9",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "autoprefixer": "^10.4.2",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": "^24 || ^22 || ^20 || ^18",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
