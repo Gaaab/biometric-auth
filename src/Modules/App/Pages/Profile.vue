@@ -60,7 +60,18 @@ const processRegisterDevice = async () => {
             </q-card-section>
             <q-card-section>
               <q-list separator>
+                <q-item v-if="!userDevices?.length">
+                  <q-item-section class="flex flex-center">
+                    <q-icon
+                      name="la la-frown"
+                      size="5em"
+                      color="grey-5"
+                    />
+                    <div class="text-body1 text-grey-5">No Devices Found</div>
+                  </q-item-section>
+                </q-item>
                 <q-item
+                  v-else
                   v-for="userDevice in userDevices"
                   :key="userDevice?.id"
                 >
