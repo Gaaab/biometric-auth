@@ -32,7 +32,7 @@ export const useAuthStore = defineStore('AUTH_STORE', () => {
   }
 
   const loginViaBiometric = () => {
-    return HTTP_API('auth/find-token-by-device', { immediate: true })
+    return HTTP_API('auth/find-token-by-device', { immediate: false })
   }
 
   return {

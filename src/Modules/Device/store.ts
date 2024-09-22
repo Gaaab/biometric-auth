@@ -15,7 +15,7 @@ export const useDeviceStore = defineStore('DEVICE_STORE', () => {
       throw Error('Not on device')
     }
 
-    return HTTP_API('users/devices/register-device', { immediate: false }).post({ device }).json()
+    return HTTP_API('users/devices/register-device', { immediate: false }).post({ device: window.device }).json()
   }
 
   const myDevices = () => {

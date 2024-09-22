@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import { useAuthStore } from '../store'
 import { storeToRefs } from 'pinia'
 import { useFingerprint } from 'src/Common/fingerprint.hook'
-import { ref, watch } from 'vue'
+import { ref, toValue, watch } from 'vue'
 import { useQuasar } from 'quasar'
 
 const loading = ref(false)
@@ -41,8 +41,22 @@ const loginViaBiometric = async () => {
     }
 
     device_token.value = secret_token
+  } catch (error) {
+    $q.notify({
+      message: 'Biometric device error',
+      color: 'negative',
+      timeout: 1000,
+      icon: 'error',
+    })
+    console.error(error)
+  }
 
-    const { isFetching, data: loginDeviceData } = authStore
+  try {
+    const {
+      isFetching,
+      data: loginDeviceData,
+      execute,
+    } = authStore
       .loginViaBiometric()
       .post({
         secret_token: device_token.value,
@@ -50,29 +64,29 @@ const loginViaBiometric = async () => {
       })
       .json()
 
-    watch(
-      () => isFetching.value,
-      (isLoading) => {
-        loading.value = isLoading
-        if (!isLoading) {
-          token.value = loginDeviceData.value.token as unknown as string
+    loading.value = true
 
-          // Remove
-          device_token.value = null
+    await execute(true)
 
-          // Redirect
-          router.replace({ name: 'app.dashboard' })
-        }
-      },
-    )
+    loading.value = false
+
+    token.value = loginDeviceData.value.token as unknown as string
+
+    // Remove
+    device_token.value = null
+
+    // Redirect
+    router.replace({ name: 'app.dashboard' })
   } catch (error: any) {
+    console.error(error)
     $q.notify({
       message: 'This device does not match on our records.',
       color: 'negative',
       timeout: 1000,
       icon: 'error',
     })
-    console.error(error)
+  } finally {
+    loading.value = false
   }
 }
 
